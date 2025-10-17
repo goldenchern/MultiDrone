@@ -1,0 +1,42 @@
+RRT(sim, max_iterations, step_size, goal_bias, bridge_prob, smoothing):
+
+    1. Initialize two trees:
+        T_start with root at sim.initial_configuration
+        T_goal  with root at sim.goal_positions
+
+    2. For iteration = 1 to max_iterations:
+
+        a. Select which tree to expand this iteration (alternate between T_start and T_goal)
+
+        b. Sample a configuration q_rand:
+            i. With probability goal_bias: sample towards the other tree
+            ii. With probability bridge_prob: perform bridge-test sampling
+            iii. Otherwise: sample uniformly from the C-space bounds
+
+        c. Find q_near = nearest node in current tree to q_rand
+
+        d. Compute q_new:
+            - Move from q_near toward q_rand
+            - Limit distance to step_size
+            - Ensure q_new is collision-free
+
+        e. If motion q_near -> q_new is valid:
+            - Add q_new as a child of q_near in the current tree
+
+            - Attempt to connect q_new to the other tree:
+                * q_near_other = nearest node in the other tree
+                * If motion q_new -> q_near_other is valid:
+                    - Merge trees
+                    - Construct path by tracing parent links from start to goal
+                    - If smoothing=True, perform path smoothing
+
+                    - Return the final path
+
+    3. If max_iterations reached without connecting trees:
+        - Return failure (no path found)
+
+    4. If necessary, do path smoothing:
+        - Attempt to replace multi-segment paths with straight lines if collision-free
+        - Repeat until no further shortcuts are possible
+
+    5. Return the final path

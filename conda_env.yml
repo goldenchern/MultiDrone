@@ -1,0 +1,23 @@
+# You can change the name of your environment on the next line
+name: assignment-env
+
+# It's good practice to specify the channels from which to install packages
+channels:
+  - conda-forge
+  - defaults
+
+# List of dependencies required for your project
+dependencies:
+  # Specify the Python version
+  - python=3.9
+
+  # Core scientific computing libraries available directly from conda
+  - numpy
+  - pyyaml
+  - scipy
+
+  # Pip is included to install packages not available on the default conda channels
+  - pip
+  - pip:
+    - python-fcl==0.0.7
+    - vedo

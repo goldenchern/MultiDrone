@@ -1,0 +1,22 @@
+# Medium complexity environment: large cube at center
+# 2 drones 
+
+bounds:
+  x: [0, 50]
+  y: [0, 50]
+  z: [0, 50]
+  
+initial_configuration: [[1, 1, 1], [50, 1, 50]]
+
+obstacles:
+  - type: box
+    position: [25, 25, 25]
+    size: [35, 35, 35]
+    rotation: [0, 0, 0]
+    color: red
+    
+goals:
+  - position: [50, 50, 50]
+    radius: 1.0
+  - position: [1, 50, 1]
+    radius: 1.0

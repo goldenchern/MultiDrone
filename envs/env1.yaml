@@ -1,0 +1,15 @@
+# Empty environment
+# 2 drones
+
+bounds:
+  x: [0, 50]
+  y: [0, 50]
+  z: [0, 50]
+  
+initial_configuration: [[1, 1, 1], [50, 1, 50]]
+    
+goals:
+  - position: [50, 50, 50]
+    radius: 1.0
+  - position: [1, 50, 1]
+    radius: 1.0

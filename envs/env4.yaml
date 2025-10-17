@@ -1,0 +1,28 @@
+# High complexity environment: narrow passageway
+# 2 drones
+
+bounds:
+  x: [0, 50] 
+  y: [0, 50] 
+  z: [0, 50] 
+  
+initial_configuration: [[1, 1, 1], [3, 1, 40]] 
+
+obstacles:
+  - type: box
+    position: [25, 25, 12] 
+    size: [50, 30, 24] 
+    rotation: [0, 0, 0]  
+    color: red
+
+  - type: box
+    position: [25, 25, 38] 
+    size: [50, 30, 24] 
+    rotation: [0, 0, 0]  
+    color: red
+    
+goals:
+  - position: [30, 48, 25] 
+    radius: 1.0 
+  - position: [20, 48, 45] 
+    radius: 1.0 
